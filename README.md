@@ -47,4 +47,4 @@ Este proyecto es de uso académico, pero estás invitado a dejar ideas, reportes
 ## 📩 Contacto
 
 Desarrollado por Jerly  
-📧 jerly.dev@email.com *(cambia esto por tu correo si deseas)*  
+📧 himer.condor@email.com
