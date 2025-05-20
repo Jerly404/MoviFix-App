@@ -1,0 +1,20 @@
+    <resources>
+        <string name="app_name">MoviFix</string>
+
+        <!-- Buttons -->
+        <string name="txt_btn_login">Log in</string>
+        <string name="txt_btn_register">Sign up</string>
+        <string name="try_as_guest">Try as Guest!</string>
+        <string name="continue_with_google">Continue with Google</string>
+        <string name="continue_with_facebook">Continue with Facebook</string>
+        <string name="sign_in">Sign in</string>
+        <string name="don_t_have_an_account_sign_up">Don’t have an account? <font color='#5400ff'>Sign up</font></string>
+
+        <!-- Texts -->
+        <string name="welcome_to_movifix">Welcome to MoviFix</string>
+        <string name="message_welcome">The ultimate movie streaming app of the century to brighten your days</string>
+        <string name="login_registration">Login &amp; Registration</string>
+        <string name="start_streaming_not_with_black_tv">Start streaming, not with black TV</string>
+        <string name="or">OR</string>
+        <string name="meesage_welcome">The ultimate movie streaming app of the\ncentury to brighten your days</string>
+    </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue_button">#0083cb</color>
+
+    <color name="colorPrimary">#5400FF</color>
+    <color name="colorPrimaryVariant">#3F00CC</color> <!-- versión más oscura -->
+    <color name="colorOnPrimary">#FFFFFF</color> <!-- texto blanco encima -->
+    <color name="background">#000000</color> <!-- negro de fondo -->
+    <color name="onBackground">#FFFFFF</color> <!-- texto blanco sobre fondo negro -->
+</resources>
