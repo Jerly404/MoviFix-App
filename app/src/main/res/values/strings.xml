@@ -40,4 +40,23 @@
     <string name="who_s_watching">Who\'s Watching?</string>
     <string name="profile_1">Profile 1</string>
     <string name="add_profile_icon">Profile\n</string>
+    <string name="edit_profiles">Edit Profiles</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="enter_profile_name">Enter profile name</string>
+    <string name="next">Next</string>
+    <string name="choose_your_avatar">Choose Your Avatar</string>
+    <string name="customize_your_recommendation_feed">Customize Your Recommendation Feed</string>
+    <string name="choose_at_least_3_favorite_genres">Choose at least 3 favorite genres:</string>
+    <string name="action">Action</string>
+    <string name="comedy">Comedy</string>
+    <string name="horror">Horror</string>
+    <string name="now_pick_3_movies_you_like">Now pick 3 movies you like:</string>
+    <string name="inception">Inception</string>
+    <string name="titanic">Titanic</string>
+    <string name="the_matrix">The Matrix</string>
+    <string name="congratulations">🎉 Congratulations!</string>
+    <string name="your_profile_has_been_set_up_successfully">Your profile has been set up successfully.</string>
+    <string name="go_to_home">Go to Home</string>
 </resources>
