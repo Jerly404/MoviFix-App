@@ -74,5 +74,7 @@
     <string name="nombre_de_la_pel_cula">Nombre de la película</string>
     <string name="m_s_informaci_n">Más información</string>
     <string name="ver_pel_cula">Ver Película</string>
+    <string name="m_s_info">Ver Pelicula</string>
+    <string name="fullscreen">Pantalla completa</string>
 
 </resources>
