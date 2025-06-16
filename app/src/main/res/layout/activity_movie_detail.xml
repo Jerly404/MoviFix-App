@@ -12,4 +12,5 @@
         app:use_controller="true"
         app:resize_mode="fit"
         android:keepScreenOn="true" />
+
 </FrameLayout>

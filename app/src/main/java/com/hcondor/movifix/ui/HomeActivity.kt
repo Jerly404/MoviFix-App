@@ -38,7 +38,10 @@ class HomeActivity : AppCompatActivity() {
                         startActivity(Intent(this, VideosActivity::class.java))
                         true
                     }
-                    R.id.nav_favorite -> { /*…*/ true }
+                    R.id.nav_favorite -> {
+                        startActivity(Intent(this, FavoritesActivity::class.java))
+                        true
+                    }
                     R.id.nav_profile  -> { /*…*/ true }
                     else -> false
                 }

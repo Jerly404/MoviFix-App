@@ -15,9 +15,9 @@ class MovieAdapter(
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val image: ImageView = itemView.findViewById(R.id.ivPoster) // ← ID CORREGIDO
-        val title: TextView = itemView.findViewById(R.id.tvTitle)
-        val year: TextView = itemView.findViewById(R.id.tvYear)
+        val image: ImageView = itemView.findViewById(R.id.imgThumbnail)     // ← corregido
+        val title: TextView = itemView.findViewById(R.id.tvTitle)       // ← corregido
+        // val year: TextView = itemView.findViewById(R.id.tvYear)       // ← eliminar o corregir
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -29,7 +29,7 @@ class MovieAdapter(
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
         holder.title.text = movie.title
-        holder.year.text = movie.year
+        // holder.year.text = movie.year // ← quitar si no tienes `tvYear`
         Glide.with(holder.itemView.context)
             .load(movie.imageUrl)
             .into(holder.image)

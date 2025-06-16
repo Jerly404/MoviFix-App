@@ -2,13 +2,14 @@ package com.hcondor.movifix.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.hcondor.movifix.database.VideoDatabaseHelper
-import com.hcondor.movifix.databinding.ActivityVideosBinding
-import com.hcondor.movifix.model.Movie
 import com.hcondor.movifix.R
+import com.hcondor.movifix.VideoPlayerActivity
+import com.hcondor.movifix.database.VideoDatabaseHelper
+import com.hcondor.movifix.model.Movie
 
 class VideosActivity : AppCompatActivity() {
 
@@ -22,9 +23,9 @@ class VideosActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.rvVideoMovies)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
-        dbHelper = VideoDatabaseHelper(this) // ✅ Primero se inicializa
-        dbHelper.deleteAllMovies() // ✅ Luego puedes usarlo
+        dbHelper = VideoDatabaseHelper(this)
 
+        // Inserta películas si la base está vacía
         if (dbHelper.getAllMovies().isEmpty()) {
             val initialMovies = listOf(
                 Movie(
@@ -66,26 +67,67 @@ class VideosActivity : AppCompatActivity() {
                     authors = "Anthony Russo, Joe Russo",
                     videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
                     imageUrl = "https://image.tmdb.org/t/p/w500/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg"
+                ),
+                Movie(
+                    title = "Joker",
+                    year = "2019",
+                    description = "La historia del origen de Joker, el icónico villano de Batman.",
+                    authors = "Todd Phillips",
+                    videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+                    imageUrl = "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"
+                ),
+                Movie(
+                    title = "Parasite",
+                    year = "2019",
+                    description = "Una familia pobre se infiltra en la vida de una familia rica, con consecuencias inesperadas.",
+                    authors = "Bong Joon-ho",
+                    videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+                    imageUrl = "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg"
+                ),
+                Movie(
+                    title = "Spider-Man: No Way Home",
+                    year = "2021",
+                    description = "Peter Parker pide ayuda a Doctor Strange, pero algo sale mal.",
+                    authors = "Jon Watts",
+                    videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+                    imageUrl = "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
                 )
             )
-
             for (movie in initialMovies) {
                 dbHelper.insertMovie(movie)
             }
         }
 
         val movies = dbHelper.getAllMovies()
-        movieAdapter = VideoAdapter(movies) { movie ->
-            val intent = Intent(this, MovieDetailActivity::class.java).apply {
-                putExtra("title", movie.title)
-                putExtra("year", movie.year)
-                putExtra("description", movie.description)
-                putExtra("authors", movie.authors)
-                putExtra("videoUrl", movie.videoUrl)
-                putExtra("imageUrl", movie.imageUrl)
+        movieAdapter = VideoAdapter(
+            movies,
+            onMoreInfoClick = { movie ->
+                val intent = Intent(this, MovieDetailActivity::class.java).apply {
+                    putExtra("title", movie.title)
+                    putExtra("year", movie.year)
+                    putExtra("description", movie.description)
+                    putExtra("authors", movie.authors)
+                    putExtra("videoUrl", movie.videoUrl)
+                    putExtra("imageUrl", movie.imageUrl)
+                }
+                startActivity(intent)
+            },
+            onFavoriteClick = { movie ->
+                dbHelper.toggleFavorite(movie)
+                movieAdapter.notifyDataSetChanged()
+                Toast.makeText(this, "${movie.title} favorito actualizado", Toast.LENGTH_SHORT).show()
+            },
+            isFavoriteChecker = { movie ->
+                dbHelper.isMovieFavorite(movie.title)
+            },
+            onVideoClick = { movie -> // ✅ nuevo callback para abrir reproductor
+                val intent = Intent(this, VideoPlayerActivity::class.java).apply {
+                    putExtra("videoUrl", movie.videoUrl)
+                }
+                startActivity(intent)
             }
-            startActivity(intent)
-        }
+        )
+
         recyclerView.adapter = movieAdapter
     }
 }

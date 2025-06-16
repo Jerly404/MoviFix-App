@@ -5,46 +5,50 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="12dp"
-    card_view:cardElevation="4dp"
+    card_view:cardElevation="6dp"
     card_view:cardBackgroundColor="@color/black">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:layout_height="wrap_content">
 
-        <!-- Poster -->
+        <!-- Imagen del póster -->
         <ImageView
             android:id="@+id/imgThumbnail"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
+            android:layout_margin="4dp"
+            android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:background="@drawable/image_rounded_bg"
-            android:contentDescription="@string/poster_image" />
+            android:contentDescription="@string/poster_image"
+            android:background="@drawable/image_rounded_bg" />
 
-        <!-- Título -->
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:paddingTop="8dp"
-            android:ellipsize="end"
-            android:maxLines="2"/>
-
-        <!-- Botón Más info -->
-        <Button
-            android:id="@+id/btnMoreInfo"
+        <!-- Íconos superpuestos en la esquina superior derecha -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/m_s_info"
-            android:textAllCaps="false"
-            android:layout_gravity="end"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/colorPrimaryVariant"
-            android:textColor="@android:color/white"/>
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:layout_gravity="top|end">
+
+            <ImageButton
+                android:id="@+id/btnFavorite"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_favorite_border"
+                android:tint="@color/red"
+                android:contentDescription="@string/favorito" />
+
+            <ImageButton
+                android:id="@+id/btnMoreInfo"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_info"
+                android:tint="@color/colorPrimary"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/mas_informaci_n" />
+        </LinearLayout>
+    </FrameLayout>
 </androidx.cardview.widget.CardView>

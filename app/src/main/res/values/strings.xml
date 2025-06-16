@@ -76,5 +76,13 @@
     <string name="ver_pel_cula">Ver Película</string>
     <string name="m_s_info">Ver Pelicula</string>
     <string name="fullscreen">Pantalla completa</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="guardar_firma">Guardar Firma</string>
+    <string name="favorito">❤️ Favorito</string>
+    <string name="series">Series</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="peliculas">Películas</string>
+    <string name="mas_informaci_n">Más información</string>
+
 
 </resources>

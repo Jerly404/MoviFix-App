@@ -11,4 +11,5 @@
     <color name="background">#000000</color> <!-- negro de fondo -->
     <color name="onBackground">#FFFFFF</color> <!-- texto blanco sobre fondo negro -->
 
+    <color name="red">#FF4081</color>
 </resources>
