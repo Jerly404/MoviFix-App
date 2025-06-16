@@ -13,6 +13,29 @@
         android:theme="@style/Theme.MoviFix"
         tools:targetApi="31">
         <activity
+            android:name=".ui.MovieDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.VideosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.FavoritesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.VideoPlayerActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape" />
+        <activity
+            android:name=".ui.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
         <activity

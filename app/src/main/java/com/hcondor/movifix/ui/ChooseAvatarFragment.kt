@@ -23,6 +23,8 @@ class ChooseAvatarFragment : Fragment() {
             findNavController().navigate(R.id.fragmentChoseAvatar)
         }
 
+
+
         return view
     }
 }

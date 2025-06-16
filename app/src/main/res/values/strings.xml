@@ -59,4 +59,20 @@
     <string name="congratulations">🎉 Congratulations!</string>
     <string name="your_profile_has_been_set_up_successfully">Your profile has been set up successfully.</string>
     <string name="go_to_home">Go to Home</string>
+    <string name="t_tulo_de_pel_cula">Título de película</string>
+    <string name="rating">Rating</string>
+    <string name="movie_poster">Movie Poster\n</string>
+    <string name="title">Title</string>
+    <string name="year">Year</string>
+    <string name="poster_image">PosterImg</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="year_2023">Year: 2023</string>
+    <string name="imdb_id_tt1234567">IMDb ID: tt1234567</string>
+    <string name="sinopsis_aqu_ir_la_descripci_n_o_sinopsis_de_la_pel_cula">Sinopsis: Aquí irá la descripción o sinopsis de la película.</string>
+    <string name="genre">Acción</string>
+    <string name="pel_culas">Películas</string>
+    <string name="nombre_de_la_pel_cula">Nombre de la película</string>
+    <string name="m_s_informaci_n">Más información</string>
+    <string name="ver_pel_cula">Ver Película</string>
+
 </resources>

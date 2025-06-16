@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
                 // Redirige a Login/Register al terminar
                 startActivity(Intent(this@SplashActivity, WelcomeActivity::class.java))
                 finish()
-            }
+            }   
         })
 
         rotateAnim.start()
