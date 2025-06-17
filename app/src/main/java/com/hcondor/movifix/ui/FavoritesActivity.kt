@@ -8,6 +8,7 @@ import com.hcondor.movifix.VideoPlayerActivity
 import com.hcondor.movifix.database.VideoDatabaseHelper
 import com.hcondor.movifix.databinding.ActivityFavoritesBinding
 import com.hcondor.movifix.model.Movie
+import com.hcondor.movifix.R
 
 class FavoritesActivity : AppCompatActivity() {
 
@@ -22,6 +23,28 @@ class FavoritesActivity : AppCompatActivity() {
 
         dbHelper = VideoDatabaseHelper(this)
         loadFavorites()
+
+        val bottomNavigationView = binding.bottomNavigationView
+        bottomNavigationView.selectedItemId = R.id.nav_favorite
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+                R.id.nav_video -> {
+                    startActivity(Intent(this, VideosActivity::class.java))
+                    true
+                }
+                R.id.nav_favorite -> true // ya estás aquí
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun loadFavorites() {
@@ -44,8 +67,8 @@ class FavoritesActivity : AppCompatActivity() {
                 dbHelper.removeFavorite(movie)
                 loadFavorites() // Recargar la lista después de eliminar
             },
-            isFavoriteChecker = { true }, // Todos son favoritos en esta vista
-            onVideoClick = { movie -> // ✅ Corrección añadida
+            isFavoriteChecker = { true },
+            onVideoClick = { movie ->
                 val intent = Intent(this, VideoPlayerActivity::class.java).apply {
                     putExtra("videoUrl", movie.videoUrl)
                 }

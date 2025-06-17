@@ -25,6 +25,28 @@ class VideosActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         dbHelper = VideoDatabaseHelper(this)
 
+        val bottomNavigationView = findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.nav_video
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+                R.id.nav_video -> true
+                R.id.nav_favorite -> {
+                    startActivity(Intent(this, FavoritesActivity::class.java))
+                    true
+                }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+
         // Inserta películas si la base está vacía
         if (dbHelper.getAllMovies().isEmpty()) {
             val initialMovies = listOf(

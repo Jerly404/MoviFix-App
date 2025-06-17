@@ -78,11 +78,18 @@
     <string name="fullscreen">Pantalla completa</string>
     <string name="limpiar">Limpiar</string>
     <string name="guardar_firma">Guardar Firma</string>
-    <string name="favorito">❤️ Favorito</string>
+    <string name="favorito">Favoritos</string>
     <string name="series">Series</string>
     <string name="favoritos">Favoritos</string>
     <string name="peliculas">Películas</string>
     <string name="mas_informaci_n">Más información</string>
+    <string name="firma_aqu">Firma aquí</string>
+    <string name="limpiar_a">Limpiar</string>
+    <string name="tu_firma_digital">Tu Firma Digital</string>
+    <string name="firmar_actualizar_firma">Firmar / Actualizar Firma</string>
+    <string name="jerly_condor">Jerly Condor</string>
+    <string name="himerjerly_gmail_com">himerjerly@gmail.com</string>
+    <string name="editar_perfil">Editar Perfil</string>
 
 
 </resources>
