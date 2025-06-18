@@ -33,7 +33,6 @@ class VideoAdapter(
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
 
-        // ✅ Al hacer clic en el póster, se abre el reproductor
         holder.imgPoster.setOnClickListener {
             onVideoClick(movie)
         }

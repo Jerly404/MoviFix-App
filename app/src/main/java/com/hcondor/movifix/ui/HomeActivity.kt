@@ -59,7 +59,6 @@ class HomeActivity : AppCompatActivity() {
             .enqueue(object : Callback<MovieResponse> {
                 override fun onResponse(c: Call<MovieResponse>, r: Response<MovieResponse>) {
                     if (r.isSuccessful) {
-                        // dentro de onResponse(...)
                         r.body()?.search?.let { apiList ->
                             moviesList.clear()
                             moviesList.addAll(apiList) // cada apiMovie ya tiene title/year/imageUrl correctos
