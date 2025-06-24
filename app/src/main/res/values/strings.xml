@@ -91,8 +91,10 @@
     <string name="jerly_condor">Jerly Condor</string>
     <string name="himerjerly_gmail_com">himerjerly@gmail.com</string>
     <string name="editar_perfil">Editar Perfil</string>
+    <string name="buscar_por_voz">Buscar por voz</string>
 
     <string-array name="categories_array">
+        <item>Todos</item>
         <item>Películas</item>
         <item>Series</item>
         <item>Documentales</item>

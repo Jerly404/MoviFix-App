@@ -11,7 +11,7 @@ import com.hcondor.movifix.R
 import com.hcondor.movifix.model.Movie
 
 class VideoAdapter(
-    private val movies: List<Movie>,
+    private var movies: List<Movie>,
     private val onMoreInfoClick: (Movie) -> Unit,
     private val onFavoriteClick: (Movie) -> Unit,
     private val isFavoriteChecker: (Movie) -> Boolean,
@@ -52,4 +52,10 @@ class VideoAdapter(
     }
 
     override fun getItemCount(): Int = movies.size
+
+    // ✅ Método para actualizar la lista
+    fun updateList(newMovies: List<Movie>) {
+        movies = newMovies
+        notifyDataSetChanged()
+    }
 }

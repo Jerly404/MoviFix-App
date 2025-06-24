@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.hcondor.movifix.model.Movie
 
 class VideoDatabaseHelper(context: Context) :
-    SQLiteOpenHelper(context, "videos.db", null, 3) { // Incrementa versión si haces cambios estructurales
+    SQLiteOpenHelper(context, "videos.db", null, 8) {
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("""
@@ -18,7 +18,8 @@ class VideoDatabaseHelper(context: Context) :
                 description TEXT,
                 authors TEXT,
                 videoUrl TEXT,
-                imageUrl TEXT
+                imageUrl TEXT,
+                category TEXT
             )
         """.trimIndent())
 
@@ -30,9 +31,16 @@ class VideoDatabaseHelper(context: Context) :
                 description TEXT,
                 authors TEXT,
                 videoUrl TEXT,
-                imageUrl TEXT
+                imageUrl TEXT,
+                category TEXT
             )
         """.trimIndent())
+    }
+    fun resetDatabaseManual() {
+        val db = writableDatabase
+        db.execSQL("DROP TABLE IF EXISTS videos")
+        db.execSQL("DROP TABLE IF EXISTS movies_fav")
+        onCreate(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -49,11 +57,11 @@ class VideoDatabaseHelper(context: Context) :
             put("authors", m.authors)
             put("videoUrl", m.videoUrl)
             put("imageUrl", m.imageUrl)
+            put("category", m.category) // ✅ Agregado
         }
         return writableDatabase.insert("videos", null, cv)
     }
 
-    // ✅ Corregido: ahora consulta la tabla correcta
     fun isMovieFavorite(title: String): Boolean {
         val db = readableDatabase
         val cursor = db.rawQuery("SELECT 1 FROM movies_fav WHERE title = ?", arrayOf(title))
@@ -62,7 +70,6 @@ class VideoDatabaseHelper(context: Context) :
         return exists
     }
 
-    // ✅ Corregido: usa la tabla correcta para favoritos
     fun toggleFavorite(movie: Movie) {
         if (isMovieFavorite(movie.title)) {
             writableDatabase.delete("movies_fav", "title = ?", arrayOf(movie.title))
@@ -82,7 +89,8 @@ class VideoDatabaseHelper(context: Context) :
                     description = cursor.getString(cursor.getColumnIndexOrThrow("description")),
                     authors = cursor.getString(cursor.getColumnIndexOrThrow("authors")),
                     videoUrl = cursor.getString(cursor.getColumnIndexOrThrow("videoUrl")),
-                    imageUrl = cursor.getString(cursor.getColumnIndexOrThrow("imageUrl"))
+                    imageUrl = cursor.getString(cursor.getColumnIndexOrThrow("imageUrl")),
+                    category = cursor.getString(cursor.getColumnIndexOrThrow("category")) // ✅ Agregado
                 )
             } while (cursor.moveToNext())
         }
@@ -91,7 +99,9 @@ class VideoDatabaseHelper(context: Context) :
     }
 
     fun deleteAllMovies() {
-        writableDatabase.delete("videos", null, null)
+        val db = writableDatabase
+        db.delete("movies", null, null)
+        db.close()
     }
 
     fun getAllFavorites(): List<Movie> {
@@ -105,7 +115,8 @@ class VideoDatabaseHelper(context: Context) :
                     description = cursor.getString(cursor.getColumnIndexOrThrow("description")),
                     authors = cursor.getString(cursor.getColumnIndexOrThrow("authors")),
                     videoUrl = cursor.getString(cursor.getColumnIndexOrThrow("videoUrl")),
-                    imageUrl = cursor.getString(cursor.getColumnIndexOrThrow("imageUrl"))
+                    imageUrl = cursor.getString(cursor.getColumnIndexOrThrow("imageUrl")),
+                    category = cursor.getString(cursor.getColumnIndexOrThrow("category")) // ✅ Agregado
                 )
             } while (cursor.moveToNext())
         }
@@ -122,6 +133,7 @@ class VideoDatabaseHelper(context: Context) :
                 put("authors", movie.authors)
                 put("videoUrl", movie.videoUrl)
                 put("imageUrl", movie.imageUrl)
+                put("category", movie.category)
             }
             writableDatabase.insert("movies_fav", null, cv)
         }
@@ -140,4 +152,5 @@ class VideoDatabaseHelper(context: Context) :
         cursor.close()
         return exists
     }
+
 }

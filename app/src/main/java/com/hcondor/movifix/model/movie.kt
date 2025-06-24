@@ -16,5 +16,7 @@ data class Movie(
     // Campos locales (SQLite) o detalle:
     val description: String = "",
     val authors: String = "",
-    val videoUrl: String = ""
+    val videoUrl: String = "",
+
+    val category: String
 )

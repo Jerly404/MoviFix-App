@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hcondor.movifix.R
+import com.hcondor.movifix.database.VideoDatabaseHelper
 import com.hcondor.movifix.model.Movie
 import com.hcondor.movifix.model.MovieResponse
 import com.hcondor.movifix.network.MovieService
@@ -35,6 +36,9 @@ class HomeActivity : AppCompatActivity() {
                 when (item.itemId) {
                     R.id.nav_home -> true
                     R.id.nav_video -> {
+                        val db = VideoDatabaseHelper(this)
+                        db.resetDatabaseManual()
+
                         startActivity(Intent(this, VideosActivity::class.java))
                         true
                     }
