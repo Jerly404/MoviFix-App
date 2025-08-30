@@ -29,13 +29,6 @@
 Desarrollado como parte del curso de **Desarrollo de Aplicaciones Móviles** en la  
 **Universidad Privada del Norte**.
 
----
-
-## 📸 Capturas (próximamente)
-
-Aquí se mostrarán imágenes de la app en funcionamiento.
-
----
 
 ## 🤝 Contribuciones
 
